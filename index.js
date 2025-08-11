@@ -12,14 +12,6 @@ sequelize.authenticate().then(() => {
     console.log('Unable to connect to the database:', error.message);
 });
 
-// Define Associations (Relationships)
-// One Department has many Employees
-Department.hasMany(Employee, {
-    foreignKey: 'departmentId', // departmentId references id(department table) as Foreign key in Employee table
-    onDelete: 'CASCADE'         // Delete employees when department is deleted
-});
-
-
 // Sync Models to Database and create tables if they don't exist
 sequelize.sync() 
     .then(() => {
